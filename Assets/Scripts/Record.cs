@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class RecordButton : MonoBehaviour
 {
-    DawPlaybackEngine playbackEngine;
+    DawPlaybackEngine playback;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (!Directory.Exists(playback.directoryPath))
+        {
+            Directory.CreateDirectory(playback.directoryPath); // Create the directory if it doesn't exist
+        }
     }
 
     // Update is called once per frame
@@ -21,9 +25,11 @@ public class RecordButton : MonoBehaviour
     // Start recording audio
     public void Record()
     {
-        playbackEngine.audioSource = GetComponent<AudioSource>();
-        playbackEngine.audioSource.clip = Microphone.Start(playbackEngine.microphone, true, 10, 44100);
-        playbackEngine.audioSource.Play();
+        playback.audioSource = GetComponent<AudioSource>();
+        int lengthSec = 3599; // Length of the recording in seconds
+
+        playback.audioSource.clip = Microphone.Start(playback.inputDevice, false, lengthSec, playback.sampleRate);
+        playback.startTime = Time.realtimeSinceStartup; // Get the current time
 
         //FileWrite
     }
