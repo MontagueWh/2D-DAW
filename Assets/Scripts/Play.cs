@@ -1,14 +1,16 @@
 using Oculus.Platform;
 using UnityEngine;
+using System.IO;
+using System;
 
 public class PlayButton : MonoBehaviour
 {
-    DawPlaybackEngine playbackEngine; // Reference to the DawPlaybackEngine script
+    DawPlaybackEngine playback; // Reference to the DawPlaybackEngine script
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Play();
+
     }
 
     // Update is called once per frame
@@ -17,8 +19,14 @@ public class PlayButton : MonoBehaviour
         
     }
 
-    public void Play()
+    public void PlayRecording()
     {
-        playbackEngine.audioSource.Play();
+        playback.audioSource.clip = playback.recordedClip; // Set the audio source clip to the recorded clip
+        playback.audioSource.Play();
+    }
+
+    public void StopRecording()
+    {
+        Microphone.End(null); // Stop the microphone recording
     }
 }

@@ -109050,6 +109050,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Loop
       objectReference: {fileID: 0}
+    - target: {fileID: 2387483856272057005, guid: e647839e956372d449e6032abc6da643, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7989566739760955795, guid: 2e4cc4e9d4e3e85449125a9bb810da51, type: 3}
+    - target: {fileID: 2387483856272057005, guid: e647839e956372d449e6032abc6da643, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4725760590601390637, guid: e647839e956372d449e6032abc6da643, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
